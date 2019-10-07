@@ -1,0 +1,13 @@
+{{ $rule := .destinationRules.defaultRule }}
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ printf "%s-%s" .Values.serviceName $rule.name }}
+  namespace: {{ print .Values.namespace }}
+spec:
+  host: {{ printf "%s.%s" .Values.serviceName .Values.namespace }}.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: {{ print .Values.simpleLoadbalancer }}
+{{- end }}
+---

@@ -1,0 +1,23 @@
+serviceName: "my-service-name"
+version: "0.0.0"
+namespace: "my-namespace"
+repo: "github.com/my-org/my-service-name"
+
+# The service owner maintains the retry policy to their service.
+retryPolicy:
+  count: 3
+  timeout: 100ms
+  retryOn: gateway-error,connect-failure,refused-stream
+
+# The service owner maintains destination rules to their service.
+# This forces teams to submit PRs to deviate from the default
+# usage pattern for the service.
+simpleLoadbalancer: LEAST_CONN
+
+# In subsequent releases, we can expose overrides for the default routes above.
+
+
+
+
+
+
